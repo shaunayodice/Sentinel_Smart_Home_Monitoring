@@ -16,7 +16,7 @@ unsigned int a;
 
 int i = 0;
 
-#define BUTTON BIT3 //push button P4.1
+#define BUTTON BIT1 
 
 int main(void)
 
@@ -26,11 +26,11 @@ int main(void)
 
     WDTCTL = WDTPW | WDTHOLD;                 // Stop WDT
 
-    P1DIR &= ~BIT3; // P2.2 becomes output
+    P1DIR &= ~BIT1; // P1.1 reads from sensor
 
-    P1REN |= BIT3;
+    P1REN |= BIT1;
 
-    P1OUT |= BIT3;
+    P1OUT |= BIT1;
 
     PM5CTL0 &= ~LOCKLPM5;
 
@@ -39,11 +39,11 @@ int main(void)
     while(1){
 
 
-        if((P1IN & BUTTON) == 0x08){
+        if((P1IN & BUTTON) == 0x02){
 
         _delay_cycles(5000);
 
-        if((P1IN & BUTTON) == 0x08){
+        if((P1IN & BUTTON) == 0x02){
 
             i=1;
 
@@ -62,7 +62,7 @@ int main(void)
 
         }
 
-        while((P1IN & BUTTON) == 0x08);
+        while((P1IN & BUTTON) == 0x02);
 
         i=0;
 
