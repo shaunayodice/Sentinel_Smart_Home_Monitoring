@@ -1,0 +1,110 @@
+#include <msp430.h>
+
+
+
+
+
+/**
+
+* main.c
+
+*/
+
+
+
+unsigned int motion;
+
+int i = 0;
+
+#define BUTTON BIT2 //push button P4.1
+
+int main(void)
+
+{
+
+
+
+    WDTCTL = WDTPW | WDTHOLD;                 // Stop WDT
+
+    P2DIR &= ~BIT2; // P2.2 becomes output
+
+    P2REN |= BIT2;
+
+    P2OUT |= BIT2;
+
+    //P2SEL1 |= BIT2;
+
+    PM5CTL0 &= ~LOCKLPM5;
+
+   // P2IES |= BIT2;
+
+
+
+   // P2IE |= BIT2; //Enable P4.1 IRQ
+
+
+
+   // P2IFG &= ~ BIT2;//Clear P4.1 IRQ Flag
+
+
+
+
+
+
+
+    //_enable_interrupts();
+
+   // _delay_cycles(5000);
+
+    while(1){
+
+
+
+
+
+        if((P2IN & BUTTON) == 0x04){
+
+        _delay_cycles(5000);
+
+        if((P2IN & BUTTON) == 0x04){
+
+            i=1;
+
+            if(i == 1){
+
+            motion=1;
+
+            }
+
+            else {
+
+            motion=0;
+
+            }}
+
+
+
+
+
+        }
+
+        while((P2IN & BUTTON) == 0x04);
+
+        i=0;
+
+        motion=0;
+
+
+
+
+
+
+
+
+    }
+
+
+
+
+
+}
