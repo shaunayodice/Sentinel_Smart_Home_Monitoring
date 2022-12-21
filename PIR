@@ -12,7 +12,7 @@
 
 
 
-unsigned int motion;
+unsigned int a;
 
 int i = 0;
 
@@ -72,13 +72,13 @@ int main(void)
 
             if(i == 1){
 
-            motion=1;
+            a=1;
 
             }
 
             else {
 
-            motion=0;
+            a=0;
 
             }}
 
@@ -92,7 +92,7 @@ int main(void)
 
         i=0;
 
-        motion=0;
+        a=0;
 
 
 
