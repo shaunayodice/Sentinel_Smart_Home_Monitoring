@@ -16,7 +16,7 @@ unsigned int a;
 
 int i = 0;
 
-#define BUTTON BIT1 
+#define BUTTON BIT1
 
 int main(void)
 
@@ -39,11 +39,11 @@ int main(void)
     while(1){
 
 
-        if((P1IN & BUTTON) == 0x02){
+        if((P1IN & BUTTON) == 0x0){
 
         _delay_cycles(5000);
 
-        if((P1IN & BUTTON) == 0x02){
+        if((P1IN & BUTTON) == 0x0){
 
             i=1;
 
@@ -62,7 +62,7 @@ int main(void)
 
         }
 
-        while((P1IN & BUTTON) == 0x02);
+        while((P1IN & BUTTON) == 0x0);
 
         i=0;
 
